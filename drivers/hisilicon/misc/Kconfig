@@ -1,0 +1,16 @@
+config MTD_BLOCK_ROMBLOCK
+	tristate "Readonly(romblock) block device access to MTD devices"
+	depends on BLOCK
+	select MTD_BLKDEVS
+	default y
+	help
+	  Same as readonly block driver, but this allow you to mount read-only
+	  file systems from an MTD device, containing bad blocks.
+
+config PART_CHANGE
+	bool "Support change partition by file '/proc/partchange'"
+	default y
+	select BLK_CMDLINE_PARSER
+	select CMDLINE_PARTITION
+	---help---
+	  Support change partition by file '/proc/partchange'

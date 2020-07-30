@@ -1,0 +1,13 @@
+
+config CPU_IDLE_HI3798CV2X
+        bool "CPU Idle Driver for Hisilicon Hi3798cv2x processors"
+        depends on ARCH_HI3798CV2X
+        help
+          Select this to enable cpuidle on Hi3798cv2x processors.
+
+config POWER_RESET_HI3798CV2X
+	bool "hisi hi3798cv2x platform reset driver"
+	depends on ARCH_HI3798CV2X
+	default y if ARCH_HI3798CV2X
+	help
+	  This driver supports reset hisi arm platform.

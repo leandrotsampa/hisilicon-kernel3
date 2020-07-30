@@ -1,0 +1,29 @@
+
+menu "Hisilicon IR drivers"
+config HISI_IR
+	tristate "Hisilicon IR remote control"
+	select MEDIA_SUPPORT
+	select MEDIA_RC_SUPPORT
+	select RC_DECODERS
+	select RC_DEVICES
+	select RC_CORE
+	select INPUT
+	default n
+	---help---
+	   Say Y here if you want to use hisilicon remote control.
+
+if HISI_IR
+menu "Hisilicon IR key map driver"
+
+config HISI_NEC_SIMPLE_ATTO
+	tristate "atto nec simple"
+	default m
+
+config HISI_NEC_SIMPLE_HISILICON
+	tristate "hisilicon nec simple"
+	default m
+
+endmenu #HISI_IR
+endif #HISI_IR
+
+endmenu #HISI_IR

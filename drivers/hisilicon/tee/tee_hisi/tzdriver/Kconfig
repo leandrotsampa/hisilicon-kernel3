@@ -1,0 +1,57 @@
+config SECURE_EXTENSION
+        bool "security extension support"
+        default n
+        help
+          Include Security Extension.
+
+config  TZDRIVER
+    tristate "Secure Execution Communicator driver"
+    default n
+    depends on SECURE_EXTENSION
+    help
+      Provides a communication interface between userspace and
+      TrustZone Operating Environment.
+
+config TEELOG
+       tristate "Secure Execution TEE Log"
+       default n
+       depends on TZDRIVER
+       help
+       TEEOS log
+
+config TC_DEBUG
+	bool "TEEC Kernel API debug"
+	default n
+	help
+	  TEEC Kernel API debug
+
+config TC_VERBOSE
+	bool "TEEC Kernel API verbose debug info"
+	default n
+	depends on TC_DEBUG
+	help
+	  TEEC Kernel API verbose debug info
+
+config RDR_MEM_ADDR
+	hex "RDR Log Memory Start Address"
+	default 0x2A800000
+	depends on TEELOG
+	help
+	  RDR Memory Start Address
+
+config RDR_LOG_SIZE
+	hex "RDR Log Memory Size"
+	default 0x800000
+	depends on TEELOG
+	help
+	  RDR Log Memory Size
+
+config TEE_TUI
+       tristate "Trusted user interface driver"
+       default n
+       depends on TZDRIVER
+       help
+       Trusted user interface diver
+config HISI_SPI_SMC
+	bool "hisi spi smc"
+	default n
